@@ -56,13 +56,13 @@ class owav{
       //закрытые члены класса
       int chan_count;              //используется при записи в wav файл для определения числа каналов на сэмпл
       int bt_dpth;                 //глубина звучания (=числу бит на канал), используется при записи
-      int samp_rate;                       //частота дискретизации
-      string fname;          //имя файла
+      int samp_rate;               //частота дискретизации
+      string fname;          	   //имя файла
       bool is_open;                //открыт файл или нет
       int byte_pos;				   //указывает текущую позицию для записи
 
-      struct wav_header fill_head();  //служебная функция, заполняет заголовок файла
-      void write_wavheader(struct wav_header wh);         //записывает заголовок в файл
+      struct wav_header fill_head();  			   //служебная функция, заполняет заголовок файла
+      void write_wavheader(struct wav_header wh);  //записывает заголовок в файл
 public:
        //закрытые члены
        owav(){is_open=false;}                                           //конструктор по умолчанию
@@ -74,9 +74,8 @@ public:
 
 
        template<class SmpType>
-       long int write_samp(SmpType *sampls, int sample_count){
+       void write_samp(SmpType *sampls, int sample_count){
     	   //записывает заданное число сэмплов
-    	   //возвращает позицию в файле до этой процедуры чтения
 
     	   	if (is_open==false )
     	   		throw bad_fstate("File must be open before reading it");
@@ -103,8 +102,6 @@ public:
     	   	byte_pos+=sample_count*sizeof(sampls[0]);
 
     	   	f.close();
-
-    	   	return 1;
        }
 
 

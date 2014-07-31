@@ -6,7 +6,7 @@ using namespace std;
 class sinusoid {
 
 protected:
-	   vector<int> x;	//дискретные значения синусоиды
+	   vector<int> x;		 //дискретные значения синусоиды
        double f_discret;     //частота дискретизации
 public:
        sinusoid(){ f_discret=1; }

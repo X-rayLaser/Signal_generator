@@ -13,11 +13,14 @@ using namespace std;
 string get_fname( )
 {
 	string s;
-
-	cout<<"Please set the name of a file by using latin characters\n";
-
-	cin>>s;
-
+	while (s==""){
+		cout<<"Please set the name of a file by using latin characters\n";
+		cin>>s;
+		if (s==""){
+			cout<<"String must not be empty\n";
+			cin.clear();
+		}
+	}
 	return s+".wav";
 }
 
@@ -45,16 +48,16 @@ int get_am()
 	int am;
 	do{
 	   char s[MAX_SBUF]="";
- 	   cout<<"Amplitude (must be an integer value): ";
+ 	   cout<<"Amplitude : ";
  	   cin>>s;
 
- 	   if (is_intnumb(s))  {
+ 	   if (is_intnumb(s) && atoi(s)!=0)  {
  		   isok=true;
  		   am = atoi(s);
  	   }
  	   else {
  		  isok=false;
- 		  cout<<"Invalid value\n";
+ 		  cout<<"Invalid input. Value must be a non-zero positive integer\n";
  	   }
 	}while (isok==false);
 
@@ -70,15 +73,15 @@ int get_f()
 	int freq;
 	do{
 	   char s[MAX_SBUF];
-	   cout<<"Frequency (must be an integer value): ";
+	   cout<<"Frequency : ";
 	   cin>>s;
-	   if (is_intnumb(s))  {
+	   if (is_intnumb(s) && atoi(s)!=0)  {
 		   isok=true;
 		   freq = atoi(s);
 	   }
 	   else {
 		  isok=false;
-		  cout<<"Invalid value\n";
+		  cout<<"Invalid input. Value must be a non-zero positive integer\n";
 	   }
 	}while (isok==false);
 
@@ -96,7 +99,7 @@ char getch_sf()
 		cout<<"Press key 'q' to finish setting a signal or any other key to add more frequencies\n";
 		cin>>s;
 		if (strlen(s)!=1)
-			cout<<"Invalid character\n";
+			cout<<"Invalid input. String must contain only 1 character\n";
 	} while (strlen(s)!=1);
 
 	return s[0];
@@ -129,13 +132,13 @@ int get_channum()
 	bool isok;
 			do{
 		       char s[MAX_SBUF]="";
-		       cout<<"Please set an actual number of channels (must be equal 1 or 2): ";
+		       cout<<"Please set an actual number of channels : ";
 		 	   cin>>s;
 		 	   if (is_intnumb(s) && ( (x=atoi(s))==1 || x==2) )
 		 		   isok=true;
 		 	   else {
 		 		  isok=false;
-		 		  cout<<"Invalid value\n";
+		 		  cout<<"Invalid input. Value must be equal to 1 or 2\n";
 		 	   }
 			}while (isok==false);
 
@@ -145,9 +148,13 @@ int get_channum()
 /* осуществляет задание сигнала пользователем и его запись в файл (ДЛЯ 1 КАНАЛА НА СЭМПЛ)*/
  void generate_1ch(string file_nm, int length)
  {
-	  if (length<=0 || length>1000){
+	  if (length>1000){
 		  cout<<"The size of the recording sound is too big\n";
-		  throw ;
+		  throw length;
+	  }
+	  if (length<=0){
+		  cout<<"length must be more than 0 \n";
+		  throw length;
 	  }
  	  owav ow(file_nm,1,16,44100);       //создаем объект ow класса owav, предназначенного для записи wav-файлов
 
@@ -219,13 +226,13 @@ int get_length()
 	   cout<<"Length of an audio, in seconds: ";
 	   cin>>s;
 
-	   if (is_intnumb(s))  {
+	   if (is_intnumb(s) && atoi(s)!=0 )  {
 		   isok=true;
 		   length = atoi(s);
 	   }
 	   else {
 		  isok=false;
-		  cout<<"Invalid value\n";
+		  cout<<"Invalid input. Value must be a non-zero positive integer\n";
 	   }
 	}while (isok==false);
 
@@ -244,6 +251,7 @@ int main() {
 	channum=get_channum();	   //запрашивается кол-во каналов в запис-мом wav-файле
 
 	int length = get_length();
+
 	//в зависимости от channum вызывается та или иная функция, доделывающая всю работу по генерирования wav-файла
     if (channum==1)
     	 generate_1ch(file_nm, length );
