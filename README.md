@@ -9,7 +9,7 @@ INTRODUCTION
   
   It is fairly easy to generate a signal for 1 channel. You need to do the following actions:
   
-    0) open .exe file with a program itself
+    0) open the app itself
     
     1) enter the name of a file
     
