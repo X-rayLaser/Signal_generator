@@ -51,5 +51,5 @@ INTRODUCTION
     
     q
     
-  Now you got a wav file containing binaural beats with 4 herz.
+  Now you got a file binaural.wav containing binaural beats with 4 herz.
   
