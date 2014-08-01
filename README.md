@@ -32,15 +32,24 @@ INTRODUCTION
   Similarly you can record a signal with 2 channels, consecutively setting a signal parameters for both channels. Also, for each channel it is possible to mix several sinusoids. As a result you will create a pretty complex sound pattern.
   
   Try to create binaural beats for fun. For instance, open the program and type this:
-    binaural 
-    2 
-    60 
-    8000
-    400 
-    q
-    8000
-    404
-    q
   
+    binaural
+    
+    2 
+    
+    60 
+    
+    8000
+    
+    400 
+    
+    q
+    
+    8000
+    
+    404
+    
+    q
+    
   Now you got a wav file containing binaural beats with 4 herz.
   
