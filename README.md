@@ -5,7 +5,7 @@ INTRODUCTION
 
   The project is called a Signal_generator. The program itself is a console app which can be used to create wav files containing a sound signal with a given set of frequencies and amplitudes.
 
-  It is possible to create a wav file with either 1 or 2 channels. Also, current version is only capable of recording a wave file having discretization frequency equal to 44100 herz.
+  It is possible to create a wav file with either 1 or 2 channels. Also, current version is only capable of recording a wave file having discretization frequency equal to 44100 hertz.
   
   It is fairly easy to generate a signal for 1 channel. You need to do the following actions:
   
@@ -21,7 +21,7 @@ INTRODUCTION
     
         - set an amplitude of the wave(like 1000 or higher to make it sound louder)
         
-        - set a frequency of it in herz
+        - set a frequency of it in hertz
         
     5) press q
     
@@ -51,5 +51,5 @@ INTRODUCTION
     
     q
     
-  Now you got a file binaural.wav containing binaural beats with 4 herz.
+  Now you got a file binaural.wav containing 4 Hz binaural beats.
   
